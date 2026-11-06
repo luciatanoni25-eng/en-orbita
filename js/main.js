@@ -55,20 +55,48 @@
     });
   }
 
-  /* ---------- Enlace a Landbot (cuando exista) ---------- */
-  // Se configura en js/config.js. Solo se aceptan enlaces https y nunca el editor privado.
+  /* ---------- OrbiBot en vivo (Landbot) ---------- */
+  // El enlace se configura en js/config.js. Solo se aceptan enlaces https y nunca el editor privado.
   var cfg = window.EN_ORBITA_CONFIG || {};
   var url = (cfg.LANDBOT_URL || "").trim();
   var valid = /^https:\/\//i.test(url) && url.indexOf("app.landbot.io/gui") === -1;
-  if (valid) {
+
+  var tabs = document.getElementById("demo-tabs");
+  var tabLive = document.getElementById("tab-live");
+  var tabSim = document.getElementById("tab-sim");
+  var panelLive = document.getElementById("panel-live");
+  var panelSim = document.getElementById("panel-sim");
+  var frame = document.getElementById("live-frame");
+  var liveLink = document.getElementById("live-link");
+
+  function showTab(which) {
+    var live = which === "live";
+    tabLive.setAttribute("aria-selected", String(live));
+    tabSim.setAttribute("aria-selected", String(!live));
+    tabLive.tabIndex = live ? 0 : -1;
+    tabSim.tabIndex = live ? -1 : 0;
+    panelLive.hidden = !live;
+    panelSim.hidden = live;
+    // El bot se carga recién la primera vez que se muestra, para no hacer lenta la página
+    if (live && !frame.getAttribute("src")) frame.setAttribute("src", url);
+  }
+
+  if (valid && tabs && frame) {
+    tabs.hidden = false;
+    liveLink.href = url;
+    tabLive.addEventListener("click", function () { showTab("live"); });
+    tabSim.addEventListener("click", function () { showTab("sim"); });
+    tabs.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      var next = document.activeElement === tabLive ? tabSim : tabLive;
+      next.focus(); next.click();
+    });
+    showTab("live");
+
+    // Los botones principales llevan a la demo con el bot en vivo abierto
     document.querySelectorAll("[data-cta-primary]").forEach(function (a) {
       a.textContent = "Probar OrbiBot";
-      a.href = url;
-      a.target = "_blank";
-      a.rel = "noopener";
+      a.addEventListener("click", function () { showTab("live"); });
     });
-    var live = document.getElementById("live-cta");
-    var liveLink = document.getElementById("live-link");
-    if (live && liveLink) { liveLink.href = url; live.hidden = false; }
   }
 })();

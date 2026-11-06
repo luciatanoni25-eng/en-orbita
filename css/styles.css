@@ -401,3 +401,16 @@ h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); }
   .chat-head small { font-size: .72rem; }
   .hero-visual { width: 86%; margin-top: 12px; }
 }
+
+/* ---------- Pestañas de la demo y bot en vivo ---------- */
+.demo-tabs { display: flex; justify-content: center; gap: 6px; width: fit-content; max-width: 100%; margin: 0 auto 24px; padding: 6px; background: var(--blanco); border: 1px solid var(--borde); border-radius: 999px; box-shadow: var(--sombra); }
+.demo-tabs[hidden] { display: none; }
+.demo-tabs button { font: 600 .95rem/1 var(--ff-body); padding: 12px 20px; border-radius: 999px; border: 0; background: transparent; color: var(--texto); cursor: pointer; transition: background .2s, color .2s; white-space: nowrap; }
+.demo-tabs button:hover { background: var(--lila-claro); }
+.demo-tabs button[aria-selected="true"] { background: var(--violeta); color: #fff; }
+@media (max-width: 420px) { .demo-tabs button { padding: 11px 14px; font-size: .88rem; } }
+.live-banner { background: var(--lila-claro); border-color: var(--lila); color: var(--oscuro); }
+.live-frame { max-width: 900px; margin: 0 auto; height: 680px; border-radius: 24px; overflow: hidden; border: 1px solid var(--borde); box-shadow: var(--sombra-fuerte); background: var(--blanco); }
+.live-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 600px) { .live-frame { height: 78vh; min-height: 520px; border-radius: 18px; } }
+.live-alt { text-align: center; margin-top: 14px; color: var(--texto-suave); }

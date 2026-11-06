@@ -470,12 +470,12 @@
 
   restartBtn.addEventListener("click", start);
 
-  // La demo arranca cuando el visitante llega a la sección (o de inmediato si el navegador no lo soporta)
-  var demoSection = document.getElementById("demo");
+  // La simulación arranca cuando su panel se ve en pantalla (o de inmediato si el navegador no lo soporta)
+  var demoSection = document.getElementById("panel-sim") || document.getElementById("demo");
   if ("IntersectionObserver" in window && demoSection) {
     var io = new IntersectionObserver(function (entries) {
       if (entries[0].isIntersecting) { io.disconnect(); start(); }
-    }, { threshold: 0.25 });
+    }, { threshold: 0.15 });
     io.observe(demoSection);
     renderCtx();
   } else {

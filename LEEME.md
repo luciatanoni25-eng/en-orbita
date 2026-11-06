@@ -28,15 +28,12 @@ sin claves y sin servicios pagos.
 Para actualizar la página después de un cambio: en Netlify, entrá al sitio → *Deploys* →
 arrastrá de nuevo la carpeta completa.
 
-## Cómo activar el botón “Probar OrbiBot”
+## OrbiBot en vivo (Landbot)
 
-1. En Landbot, copiá el **enlace público para compartir** del bot (no el del editor).
-2. Abrí `js/config.js` con cualquier editor de texto (Bloc de notas, TextEdit).
-3. Pegá el enlace entre las comillas: `LANDBOT_URL: "https://..."`.
-4. Guardá y volvé a subir la carpeta a Netlify.
-
-Los botones principales pasan a decir “Probar OrbiBot” y aparece un bloque debajo de la demo.
-La simulación académica sigue disponible.
+El bot real ya está integrado en la sección Demo, con dos pestañas: “OrbiBot en vivo” y
+“Simulación guiada”. El enlace está en `js/config.js` (`LANDBOT_URL`).
+Para cambiarlo, pegá el nuevo enlace público entre las comillas (nunca el del editor
+`app.landbot.io/gui/...`). Si lo dejás vacío, solo se muestra la simulación.
 
 ## Cómo cambiar textos
 

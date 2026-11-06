@@ -169,16 +169,34 @@
       <div class="container">
         <header class="section-head reveal">
           <span class="eyebrow">Demo</span>
-          <h2>Mirá cómo el contexto se vuelve contenido</h2>
-          <p>Respondé con los botones como si fueras quien maneja las redes de Factor 3, nuestro caso piloto.</p>
+          <h2>Probá OrbiBot</h2>
+          <p>Hablá con el prototipo real o recorré una simulación guiada con Factor 3, nuestro caso piloto.</p>
         </header>
 
-        <div class="sim-banner reveal" role="note">
+        <!-- Las pestañas aparecen solo si hay un enlace de Landbot en js/config.js -->
+        <div class="demo-tabs reveal" role="tablist" aria-label="Elegí cómo probar OrbiBot" id="demo-tabs" hidden>
+          <button type="button" role="tab" id="tab-live" aria-controls="panel-live" aria-selected="true">💬 OrbiBot en vivo</button>
+          <button type="button" role="tab" id="tab-sim" aria-controls="panel-sim" aria-selected="false" tabindex="-1">🧪 Simulación guiada</button>
+        </div>
+
+        <div class="demo-panel" id="panel-live" role="tabpanel" aria-labelledby="tab-live" hidden>
+          <div class="sim-banner live-banner" role="note">
+            <strong>🛠️ Prototipo en construcción.</strong>
+            Es el bot real, hecho en Landbot. Puede equivocarse y todavía no consulta internet, así que no verifica tendencias. No compartas datos personales: alcanza con contarle sobre el negocio.
+          </div>
+          <div class="live-frame">
+            <iframe id="live-frame" title="OrbiBot, prototipo en Landbot" allow="clipboard-write" loading="lazy"></iframe>
+          </div>
+          <p class="live-alt small">¿No carga? <a id="live-link" href="#" target="_blank" rel="noopener">Abrí OrbiBot en una pestaña nueva ↗</a></p>
+        </div>
+
+        <div class="demo-panel" id="panel-sim" role="tabpanel" aria-labelledby="tab-sim">
+        <div class="sim-banner" role="note">
           <strong>🧪 Simulación académica.</strong>
           Es una conversación predefinida, escrita por el equipo. No usa IA en vivo ni consulta internet. Las ideas son ejemplos ilustrativos, no tendencias verificadas.
         </div>
 
-        <div class="demo reveal">
+        <div class="demo">
           <div class="chat" aria-label="Simulación de conversación con OrbiBot">
             <div class="chat-head">
               <img src="assets/logo-simbolo.png" alt="" width="34" height="34">
@@ -199,11 +217,6 @@
             <div class="ctx-progress"><span id="ctx-bar"></span></div>
           </aside>
         </div>
-
-        <!-- Este bloque aparece solo si se carga el enlace público de Landbot en js/config.js -->
-        <div class="live-cta" id="live-cta" hidden>
-          <p><strong>¿Querés probar la versión en construcción?</strong> Ya podés hablar con OrbiBot en Landbot.</p>
-          <a class="btn btn-primary" id="live-link" href="#" target="_blank" rel="noopener">Probar OrbiBot</a>
         </div>
       </div>
     </section>
@@ -295,7 +308,7 @@
             <h3>Estado del prototipo</h3>
             <div class="status-col done">
               <h4>✅ Hecho</h4>
-              <p>Problema, público y alcance definidos. Primeras instrucciones del bot en Landbot. Bienvenida y opciones de objetivo. Logo generado con IA.</p>
+              <p>Problema, público y alcance definidos. Primeras instrucciones del bot en Landbot. Bienvenida y opciones de objetivo. Enlace público del prototipo. Logo generado con IA.</p>
             </div>
             <div class="status-col wip">
               <h4>🛠️ En construcción</h4>
